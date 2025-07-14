@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>해시 기반 웹 퍼즐</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f3;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 5px 5px 15px #ccc, -5px -5px 15px #fff;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    input {
+      padding: 12px;
+      font-size: 18px;
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>정답을 입력하세요</h1>
+    <input type="text" id="answerInput" placeholder="힌트는 어디에 있을까? 🤔" />
+    <button onclick="checkAnswer()">제출</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const inputStr = document.getElementById('answerInput').value;
+      const inputNum = Number(inputStr); // NaN 처리 가능
+
+      const messageEl = document.getElementById('message');
+
+      if (Object.is(inputNum, NaN)) {
+        messageEl.style.color = 'green';
+        messageEl.textContent = "🎉 정답입니다! 개발자 모드를 열어본 당신, 천재!";
+      } else {
+        messageEl.style.color = 'red';
+        messageEl.textContent = "❌ 틀렸습니다. 다시 시도해보세요.";
+      }
+    }
+  </script>
+</body>
+</html>
